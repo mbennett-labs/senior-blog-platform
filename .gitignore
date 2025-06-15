@@ -1,0 +1,24 @@
+# Django
+*.log
+*.pyc
+__pycache__/
+db.sqlite3
+.env
+media/uploads/
+.DS_Store
+
+# Virtual Environment
+blog-platform-env/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+
+# Backup files
+*.tar.gz
+*.bak

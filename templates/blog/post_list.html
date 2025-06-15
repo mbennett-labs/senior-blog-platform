@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        {% if posts %}
+            {% for post in posts %}
+                <article class="post-card">
+                    <h2 class="post-title">
+                        <a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a>
+                    </h2>
+                    
+                    <div class="post-meta">
+                        <span><i class="fas fa-calendar-alt"></i> {{ post.publish|date:"F j, Y" }}</span>
+                        {% if post.category %}
+                            <a href="#" class="category-badge">{{ post.category.name }}</a>
+                        {% endif %}
+                        <span><i class="fas fa-clock"></i> 5 min read</span>
+                    </div>
+                    
+                    <div class="post-summary">
+                        {{ post.summary }}
+                    </div>
+                    
+                    <a href="{% url 'blog:post_detail' post.slug %}" class="read-more">
+                        Continue Reading <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+            {% endfor %}
+        {% else %}
+            <div class="welcome-section">
+                <h2>Welcome to Sue's Voice for Justice</h2>
+                <p class="lead">A space for thoughtful reflection on social justice, community building, and faith-inspired action. New posts coming soon.</p>
+                <a href="/admin/" class="btn-spiritual">
+                    <i class="fas fa-pen"></i> Add Your First Post
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="col-lg-4">
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3 class="widget-title">About Sue</h3>
+                <p>Passionate advocate for social justice, community organizer, and speaker dedicated to creating positive change through faith-inspired action.</p>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Speaking Engagements</h3>
+                <p>Available for conferences, workshops, and community events about social justice and faith-based organizing.</p>
+                <a href="/admin/" class="btn-spiritual">Book Speaking Event</a>
+            </div>
+        </aside>
+    </div>
+</div>
+{% endblock %}
